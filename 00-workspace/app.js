@@ -3,11 +3,11 @@
 var mapProjection = new ol.proj.Projection({
     code: 'EPSG:3857',
     extent: [-20037508, -20037508, 20037508, 20037508.34]
-})
+});
 var geoProjection = new ol.proj.Projection({
     code: 'EPSG:4326',
     extent: [-180, -180, 180, 180]
-})
+});
 
 var map = new ol.Map({
     layers: [
@@ -47,7 +47,29 @@ var app = {
                 callback(null, data);
             },
         })
-    })
+    }, 150),
+
+    renderResultsList: () =>
+    {
+        let resultsList = $('#results-list');
+        resultsList.empty();
+
+        let results = app.options.map((feature) =>
+        {
+            let li = $('<li class="results-list-item">' + feature.properties.label + '</li>');
+        });
+
+        resultsList.append(results);
+
+        if(app.options.length > 0)
+        {
+            resultsList.removeClass('hidden');
+        }
+        else
+        {
+            resultsList.addClass('hidden');
+        }
+    }
 };
 
 $('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
