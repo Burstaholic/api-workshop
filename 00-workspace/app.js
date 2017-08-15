@@ -73,3 +73,4 @@ var app = {
 };
 
 $('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
+$('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
