@@ -32,8 +32,22 @@ let app = {
     {
         let el = e.target;
         let val = el.value;
-        console.log('Got:', val);
-    }
+        app.queryAutocomplete(val, (err, data) =>
+        {
+            console.log('Got:', data);
+        });
+    },
+
+    queryAutocomplete: throttle((text, callback) =>
+    {
+        $.ajax({
+            url: 'https://search.mapzen.com/v1/autocomplete?text=' + text + '&api_key=' + app.mapzenKey,
+            success: (data, status, req) =>
+            {
+                callback(null, data);
+            },
+        })
+    })
 };
 
 $('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
