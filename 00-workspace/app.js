@@ -27,6 +27,11 @@ var map = new ol.Map({
 var app = {
     mapzenKey: 'mapzen-moAoHZd',
     activeSearch: 'from',
+    options: [],
+    selection: {
+        from: {},
+        to: {}
+    },
 
     typeAhead: function (e)
     {
@@ -46,6 +51,7 @@ var app = {
             {
                 callback(null, data);
             },
+            error: ()=>{}
         })
     }, 150),
 
@@ -61,7 +67,7 @@ var app = {
 
         resultsList.append(results);
 
-        if(app.options.length > 0)
+        if (app.options.length > 0)
         {
             resultsList.removeClass('hidden');
         }
