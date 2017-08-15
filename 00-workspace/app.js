@@ -24,7 +24,7 @@ var map = new ol.Map({
     })
 });
 
-let app = {
+var app = {
     mapzenKey: 'mapzen-moAoHZd',
     activeSearch: 'from',
 
