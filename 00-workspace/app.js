@@ -23,3 +23,17 @@ var map = new ol.Map({
     zoom: 5
   })
 });
+
+let app = {
+	mapzenKey: 'mapzen-moAoHZd',
+  activeSearch: 'from',
+  
+  typeAhead: function(e)
+  {
+    let el = e.target;
+    let val = el.value;
+    console.log('Got:', val);
+  }
+};
+
+$('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead)
