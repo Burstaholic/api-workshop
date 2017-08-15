@@ -76,7 +76,10 @@ var app = {
             resultsList.addClass('hidden');
         }
     }
-}
+};
 
-$('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
+$().ready(()=>
+{
+    $('#search-from-input').on('keyup', {input: 'from'}, app.typeAhead);
+});
 
